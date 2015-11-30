@@ -1,4 +1,4 @@
-6de4147c9f4470a48674d917e5f7db50 *DESCRIPTION
+9794bf444d1b46b4a0644ac82132ec32 *DESCRIPTION
 f45779cbcf9284e55c9065c2272040b5 *LICENSE
 95075b643ce06279b0300e6cc4d982f0 *NAMESPACE
 cc8ce979070b50426944f0fe331d5e83 *R/RNeo4j.R
@@ -22,9 +22,9 @@ cda03da41a27b3899529b1988f78cefa *R/deleteProp.R
 0338c62df3a318ce8897758e242b107c *R/dropIndex.R
 8c34e0828243b532a50b44062188835d *R/dropLabel.R
 273b3d0a10ce7c19a979550a7c865d4c *R/endNode.R
-92cb55335d1ae1a76701454dd26feeed *R/getConstraint.R
+7e896cae656ee2aa32d6454faec791c5 *R/getConstraint.R
 de0dca6a5802e6cc3c7afeb600ac98d2 *R/getID.R
-6d0eb1c61b6892134f80e610c72af5b0 *R/getIndex.R
+31ba6eef6d8c89c6ce22de0846f0424d *R/getIndex.R
 edbdd7fb1b1a78b039c2ffe81c756f18 *R/getLabel.R
 92729ae8e43cca37645df4c35ea2d103 *R/getLabeledNodes.R
 94548ead94f354fb47729228fb0af619 *R/getNodes.R
@@ -38,7 +38,7 @@ e9415dca0fa61c0a18c5ed84cf4c7771 *R/getType.R
 b2acf0fce5b148e8ada6adc8400c2dfd *R/getUniqueNode.R
 93fd9587da9d1626a86823a800ae1c83 *R/importSample.R
 cbfa60d0b7e7ed8e313f07ba9dfb33d2 *R/incomingRels.R
-13e4428dfa9d6147a80e229969b37a02 *R/internal.R
+82c6505e7cff77420bc279cd941839b3 *R/internal.R
 7e11f37c75361fc8a2cb188c5e9555e7 *R/newTransaction.R
 5d02e06166ad29a6147ba1640692cbf4 *R/nodes.R
 67fc438d05baac095b35905adbd2fa34 *R/outgoingRels.R
