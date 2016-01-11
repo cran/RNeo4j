@@ -1,4 +1,4 @@
-9794bf444d1b46b4a0644ac82132ec32 *DESCRIPTION
+29ebed35b95f8809f92da8b4a57270f3 *DESCRIPTION
 f45779cbcf9284e55c9065c2272040b5 *LICENSE
 95075b643ce06279b0300e6cc4d982f0 *NAMESPACE
 cc8ce979070b50426944f0fe331d5e83 *R/RNeo4j.R
@@ -38,7 +38,7 @@ e9415dca0fa61c0a18c5ed84cf4c7771 *R/getType.R
 b2acf0fce5b148e8ada6adc8400c2dfd *R/getUniqueNode.R
 93fd9587da9d1626a86823a800ae1c83 *R/importSample.R
 cbfa60d0b7e7ed8e313f07ba9dfb33d2 *R/incomingRels.R
-82c6505e7cff77420bc279cd941839b3 *R/internal.R
+6b0d4cc1e98587eebf8928ff9741e3aa *R/internal.R
 7e11f37c75361fc8a2cb188c5e9555e7 *R/newTransaction.R
 5d02e06166ad29a6147ba1640692cbf4 *R/nodes.R
 67fc438d05baac095b35905adbd2fa34 *R/outgoingRels.R
@@ -72,9 +72,9 @@ b8ea6d05a718f6f1a9827cc585ee781d *man/dijkstra.Rd
 18e9ed2e6f0b5b3d6c37129e109558e1 *man/dropIndex.Rd
 d906d1518777e6db6a233e42e4a81eba *man/dropLabel.Rd
 f7991abf05dd1019fc27e6cde73dd109 *man/endNode.Rd
-986f38f6367bbf8639a37fefd7f72be5 *man/getConstraint.Rd
+775fa2b0d5e86405b4839fdb01044598 *man/getConstraint.Rd
 5ca4074fcd899cb494614c9741f3ddae *man/getID.Rd
-46a9e72a0d0d8b94d487f591a7141f25 *man/getIndex.Rd
+7ed79c94f6fa6e944196022b81b80ec9 *man/getIndex.Rd
 c68059544de95231d0f874919c9dd9cb *man/getLabel.Rd
 e2a2a7acece4922be941dccd035ae5a9 *man/getLabeledNodes.Rd
 8b7e678355721ad024c6d0a09074631c *man/getNodes.Rd
@@ -96,8 +96,11 @@ b8f55eedee6afc45ed5fef15d52ea6fd *man/incomingRels.Rd
 485212174962a19ab0f308eadd66d1ea *man/startNode.Rd
 dcac537daac0bb6398e7681fa2d5d0e1 *man/transactions.Rd
 1a08ad4468037884a501d2009afc90f2 *man/updateProp.Rd
+e7ff68071ec5f5d99511e97ccbe67933 *tests/test.sh
+1ec39fa2b9ad6e1c2f9fc83e86756773 *tests/test_all.sh
 e90136a5db90a014d16404b3b915873e *tests/testthat/test-cypher.R
 cbd56871c7f37216a9c781407789e707 *tests/testthat/test-cypherToList.R
+51e8a13e4ab4612a4b61b6b7b66a6ae9 *tests/testthat/test-internals.R
 7ab84f9cbc802349d2afc8172f6fe0a8 *tests/testthat/test-labels.R
 7e23e1562e027ecc3e0d13ddb82a06b0 *tests/testthat/test-nodes.R
 a90c9ac6495d192e0adb6c5303badf9b *tests/testthat/test-paths.R
