@@ -1,5 +1,5 @@
-29ebed35b95f8809f92da8b4a57270f3 *DESCRIPTION
-f45779cbcf9284e55c9065c2272040b5 *LICENSE
+44db41c87f7bbac5501a31694a35e0de *DESCRIPTION
+3d63b545a18ab981c785a5488dc90333 *LICENSE
 95075b643ce06279b0300e6cc4d982f0 *NAMESPACE
 cc8ce979070b50426944f0fe331d5e83 *R/RNeo4j.R
 a1489c365bb46899a90facf16173fa1c *R/addConstraint.R
@@ -38,7 +38,7 @@ e9415dca0fa61c0a18c5ed84cf4c7771 *R/getType.R
 b2acf0fce5b148e8ada6adc8400c2dfd *R/getUniqueNode.R
 93fd9587da9d1626a86823a800ae1c83 *R/importSample.R
 cbfa60d0b7e7ed8e313f07ba9dfb33d2 *R/incomingRels.R
-6b0d4cc1e98587eebf8928ff9741e3aa *R/internal.R
+32e938ae0f27676fdac0737c5df53d49 *R/internal.R
 7e11f37c75361fc8a2cb188c5e9555e7 *R/newTransaction.R
 5d02e06166ad29a6147ba1640692cbf4 *R/nodes.R
 67fc438d05baac095b35905adbd2fa34 *R/outgoingRels.R
@@ -100,7 +100,7 @@ e7ff68071ec5f5d99511e97ccbe67933 *tests/test.sh
 1ec39fa2b9ad6e1c2f9fc83e86756773 *tests/test_all.sh
 e90136a5db90a014d16404b3b915873e *tests/testthat/test-cypher.R
 cbd56871c7f37216a9c781407789e707 *tests/testthat/test-cypherToList.R
-51e8a13e4ab4612a4b61b6b7b66a6ae9 *tests/testthat/test-internals.R
+12c50689a5541831927bfd6ad5ce63f6 *tests/testthat/test-internals.R
 7ab84f9cbc802349d2afc8172f6fe0a8 *tests/testthat/test-labels.R
 7e23e1562e027ecc3e0d13ddb82a06b0 *tests/testthat/test-nodes.R
 a90c9ac6495d192e0adb6c5303badf9b *tests/testthat/test-paths.R
