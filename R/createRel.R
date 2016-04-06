@@ -35,10 +35,6 @@ createRel.node = function(.fromNode, .relType, .toNode, ...) {
   stopifnot(is.character(.relType), 
             "node" %in% class(.toNode))
   
-  if(length(grep(" ", .relType)) > 0) {
-    stop("Cannot have spaces in relationship types. Use UNDER_SCORES instead.")
-  }
-  
   fields = list(to = attr(.toNode, "self"), type = .relType)
   dots = list(...)
   params = parse_dots(dots)
@@ -48,11 +44,7 @@ createRel.node = function(.fromNode, .relType, .toNode, ...) {
   }
     
   url = attr(.fromNode, "create_relationship")
-  result = http_request(url,
-                        "POST",
-                        .fromNode,
-                        fields)
-
-  rel = configure_result(result, attr(.fromNode, "username"), attr(.fromNode, "password"), attr(.fromNode, "auth_token"))
+  result = http_request(url, "POST", fields)
+  rel = configure_result(result)
   return(rel)
 }

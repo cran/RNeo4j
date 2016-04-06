@@ -1,8 +1,8 @@
 version = function() {
-  return("1.6.3")
+  return("1.6.4")
 }
 
-configure_result = function(result, username = NULL, password = NULL, auth_token=NULL) {
+configure_result = function(result) {
   if(is.character(result) | is.numeric(result)) {
     return(result)
   }
@@ -83,72 +83,42 @@ configure_result = function(result, username = NULL, password = NULL, auth_token
     class(result) = "path"
   }
   
-  if(!is.null(username) && !is.null(password)) {
-    attr(result, "username") = username
-    attr(result, "password") = password
-  }
-  
-  if(!is.null(auth_token)) {
-    attr(result, "auth_token") = auth_token
-  }
-  
   return(result)
 }
 
-http_request = function(url, request_type, master_entity, body=NULL) {
+http_request = function(url, request_type, body=NULL) {
   httr::set_config(httr::user_agent(paste("RNeo4j", version(), sep="/")))
-  opts = c(attr(master_entity, "opts"), ssl_verifypeer = 0)
+  opts = c(.state$opts, ssl_verifypeer = 0)
   
-  username = attr(master_entity, "username")
-  password = attr(master_entity, "password")
+  username = .state$username
+  password = .state$password
   
-  if(!is.null(username) & !is.null(password)) {
+  if(!is.null(username) && !is.null(password)) {
     auth = httr::authenticate(username, password, type="basic")
     httr::set_config(auth)
   }
   
-  if(is.null(names(body)) && length(body) == 1) {
-    if(is.character(body)) {
-      body = paste0('"', body, '"')
-    } else if(is.numeric(body)) {
-      body = toString(body)
-    } else if(is.logical(body)) {
-      if(body) {
-        body = ifelse(body, "true", "false")
-      }
-    }
-  } else if(length(body) > 0) {
-    body = RJSONIO::toJSON(body, digits=longest_digit(body))
+  if (!is.null(body)) {
+    body = jsonlite::toJSON(body, auto_unbox=TRUE, null="null")
   }
   
-  if(request_type == "POST") {
-    response = httr::POST(url=url, httr::config(opts), body=body)
-  } else if(request_type == "PUT") {
-    response = httr::PUT(url=url, httr::config(opts), body=body)
-  } else if(request_type == "GET") {
-    response = httr::GET(url=url, httr::config(opts), body=body)
-  } else if(request_type == "DELETE") {
-    response = httr::DELETE(url=url, httr::config(opts), body=body)
-  }
+  response = httr::VERB(request_type, url=url, config=httr::config(opts), body=body)
+  status_code = httr::status_code(response)
+  content = httr::content(response)
   
-  status = httr::http_status(response)
-  
-  if(status$category != "Success") {
-    message = status['message']
-    content = httr::content(response)
+  if(status_code >= 300 || status_code < 200) {
+    status = httr::http_status(response)
+    message = status["message"]
     
     if("errors" %in% names(content)) {
       error = content$errors[[1]]
-      message = paste(message, 
-                      error['code'],
-                      error['message'],
-                      sep="\n")
+      message = paste(message, error["code"], error["message"], sep="\n")
     }
     
     stop(message, call.=FALSE)
   }
   
-  return(httr::content(response))
+  return(content)
 }
 
 cypher_endpoint = function(graph, query, params) {
@@ -159,11 +129,7 @@ cypher_endpoint = function(graph, query, params) {
   }
   
   url = attr(graph, "cypher")
-  response = http_request(url,
-                          "POST",
-                          graph,
-                          body)
-  
+  response = http_request(url, "POST", body)
   return(response)
 }
 
@@ -182,9 +148,7 @@ shortest_path_algo = function(all, algo, fromNode, relType, toNode, direction = 
   
   url = paste(attr(fromNode, "self"), path, sep = "/")
   to = attr(toNode, "self")
-  fields = list(to = to,
-                relationships = list(type = relType, direction = direction),
-                algorithm = algo)
+  fields = list(to = to, relationships = list(type = relType, direction = direction), algorithm = algo)
   
   if(algo == "shortestPath") {
     fields = c(fields, list(max_depth=max_depth))
@@ -192,7 +156,7 @@ shortest_path_algo = function(all, algo, fromNode, relType, toNode, direction = 
     fields = c(fields, list(cost_property=cost_property))
   }
   
-  result = try(http_request(url, "POST", fromNode, fields), silent = T)
+  result = try(http_request(url, "POST", fields), silent = T)
   
   if(class(result) == "try-error") {
     return(invisible())
@@ -203,10 +167,10 @@ shortest_path_algo = function(all, algo, fromNode, relType, toNode, direction = 
   }
   
   if(all) {
-    paths = lapply(result, function(r) configure_result(r, attr(fromNode, "username"), attr(fromNode, "password"), attr(fromNode, "auth_token")))
+    paths = lapply(result, function(r) configure_result(r))
     return(paths)
   } else {
-    path = configure_result(result, attr(fromNode, "username"), attr(fromNode, "password"), attr(fromNode, "auth_token"))
+    path = configure_result(result)
     return(path)
   }
 }
